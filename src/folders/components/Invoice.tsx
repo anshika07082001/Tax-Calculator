@@ -6,26 +6,36 @@ const Invoice = (props: invoiceProps) => {
   useEffect(() => {
     props.calculateTax();
   }, []);
+
   return (
     <div>
       <h3>Results</h3>
       <div className="results">
         {/* total salary calculated */}
-        <p>Total Salary : &nbsp;&nbsp; {props.calculateFinal.totalSalary}</p>
+        <p>
+          Total Salary : &nbsp;&nbsp; ₹
+          {parseInt(props.calculateFinal.totalSalary.toString())}
+        </p>
         <p>
           {/* total deduction calculated */}
-          Total Deduction : &nbsp;&nbsp; {props.calculateFinal.totalDeduction}
+          Total Deduction : &nbsp;&nbsp; ₹
+          {parseInt(props.calculateFinal.totalDeduction.toString())}
         </p>
         {/* total taxable income calculated */}
         <p>
-          Taxable Income : &nbsp;&nbsp; {props.calculateFinal.taxableIncome}
+          Taxable Income : &nbsp;&nbsp; ₹
+          {parseInt(props.calculateFinal.taxableIncome.toString())}
         </p>
         {/* existing regime calculated */}
         <p>
-          Existing Tax Regime : &nbsp;&nbsp; {props.calculateFinal.existTax}
+          Existing Tax Regime : &nbsp;&nbsp; ₹
+          {parseInt(props.calculateFinal.existTax.toString())}
         </p>
         {/* new regime calculated */}
-        <p>New Tax Regime : &nbsp;&nbsp; {props.calculateFinal.newTax}</p>
+        <p>
+          New Tax Regime : &nbsp;&nbsp; ₹
+          {parseInt(props.calculateFinal.newTax.toString())}
+        </p>
       </div>
     </div>
   );
