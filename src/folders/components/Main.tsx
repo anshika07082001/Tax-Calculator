@@ -110,6 +110,7 @@ const Main = () => {
   };
   // function calculates the exists and new tex regime
   const taxRegime = () => {
+    // calculation of old tax regime
     oldTaxArr.map((item) => {
       if (
         item.min < calculateFinal.taxableIncome &&
@@ -120,14 +121,14 @@ const Main = () => {
           item.addVal;
       }
     });
-
+    // calculation of new tax regime
     newTaxArr.map((item) => {
       if (
         item.min < calculateFinal.taxableIncome &&
         calculateFinal.taxableIncome <= item.max
       ) {
         calculateFinal.newTax =
-          (calculateFinal.taxableIncome = item.above) * (item.percent / 100) +
+          (calculateFinal.taxableIncome - item.above) * (item.percent / 100) +
           item.addVal;
       }
     });
