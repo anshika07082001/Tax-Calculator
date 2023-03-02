@@ -22,10 +22,10 @@ const Income = (props: incomeProps) => {
   };
 
   //   submit handler
-//   const incomeHandler = (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
+  //   const incomeHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  //     e.preventDefault();
 
-//   };
+  //   };
 
   return (
     <div className="income">
@@ -34,9 +34,10 @@ const Income = (props: incomeProps) => {
         {props.incomeInp.map((item, i) => {
           return (
             <TextField
+              error={item.error}
               id="outlined-basic"
               key={i}
-              label={item.label}
+              label={`${item.label}*`}
               variant="outlined"
               type="text"
               onChange={(e) => incChangeHandler(e, item)}

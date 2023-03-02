@@ -11,22 +11,28 @@ const Deduction = (props: deductionprops) => {
     if (val.match(/^[0-9]*$/)) {
       props.deductionInp.map((ele) => {
         if (item.label === ele.label) {
-          if (Number(val) < 150000) {
-            ele.value=val
-          } 
-          // else {
-          //   ele.error = true;
-          // }
-        }
-        if (item.label === ele.label) {
-        }
-        if (item.label === ele.label) {
+          ele.value = val;
         }
       });
     } else {
       e.currentTarget.value.slice(-1);
     }
     props.setDeductionInp([...props.deductionInp]);
+  };
+
+  const checkhandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked === true) {
+      props.setCheckInp(true);
+    } else {
+      props.setCheckInp(false);
+    }
+  };
+
+  const rentHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    props.rentInp.value = e.currentTarget.value;
+    props.setrentInp({ ...props.rentInp });
   };
 
   return (
@@ -36,6 +42,7 @@ const Deduction = (props: deductionprops) => {
         {props.deductionInp.map((item, i) => {
           return (
             <TextField
+              key={i}
               error={item.error}
               id="outlined-error-helper-text"
               label={item.label}
@@ -52,11 +59,22 @@ const Deduction = (props: deductionprops) => {
           defaultValue="Standard Deduction is ₹50,000"
         />
         <FormControlLabel
-          control={<Checkbox />}
-          label="Do You live in Metro City"
+          control={
+            <Checkbox
+              onChange={(e) => checkhandler(e)}
+              checked={props.checkInp}
+            />
+          }
+          label="Do you live in Delhi, Mumbai, Kolkata or Chennai?"
+        />
+        <TextField
+          label={props.rentInp.label}
+          error={props.rentInp.error}
+          value={props.rentInp.value}
+          onChange={(e) => rentHandler(e)}
         />
 
-        <Button variant="contained">Submit</Button>
+        {/* <Button variant="contained">Submit</Button> */}
       </form>
     </div>
   );
