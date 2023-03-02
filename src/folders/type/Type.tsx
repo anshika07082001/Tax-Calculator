@@ -26,9 +26,6 @@ export type deductionprops = {
 
 // type for invoice component props
 export type invoiceProps = {
-  incomeInp: incomeInp[];
-  deductionInp: deductionInp[];
-  checkInp: boolean;
   calculateTax: () => void;
   calculateFinal: calculate;
 };

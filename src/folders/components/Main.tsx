@@ -190,16 +190,16 @@ const Main = () => {
   const resetTax = () => {
     setActiveStep(0);
     setCheckInp(false);
-    // incomeInp.map((item) => {
-    //   item.value = "";
-    //   item.error = false;
-    // });
-    // setIncomeInp({ ...incomeInp });
-    // deductionInp.map((item) => {
-    //   item.value = "";
-    //   item.error = false;
-    // });
-    // setDeductionInp({ ...deductionInp });
+    incomeInp.map((item) => {
+      item.value = "";
+      item.error = false;
+    });
+    setIncomeInp([...incomeInp]);
+    deductionInp.map((item) => {
+      item.value = "";
+      item.error = false;
+    });
+    setDeductionInp([...deductionInp]);
     setrentInp({ label: "Yearly Rent Paid", error: false, value: "" });
     setcalculateFinal({
       totalSalary: 0,
@@ -236,13 +236,12 @@ const Main = () => {
       {activeStep === 2 ? (
         <>
           <Invoice
-            incomeInp={incomeInp}
-            deductionInp={deductionInp}
-            checkInp={checkInp}
             calculateTax={calculateTax}
             calculateFinal={calculateFinal}
           />
-          <Button onClick={resetTax}>Reset</Button>
+          <Button onClick={resetTax} variant="contained">
+            Reset
+          </Button>
         </>
       ) : (
         // rendering of stepper component
