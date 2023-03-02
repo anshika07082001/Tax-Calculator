@@ -1,16 +1,19 @@
 import React from "react";
 
+// type for DotsMobileStepper components props
 export type stepperprops = {
   activeStep: number;
   handleBack: () => void;
   handleNext: () => void;
 };
 
+// type for income component props
 export type incomeProps = {
   incomeInp: incomeInp[];
   setIncomeInp: React.Dispatch<React.SetStateAction<incomeInp[]>>;
 };
 
+// type for deduction component props
 export type deductionprops = {
   incomeInp: incomeInp[];
   deductionInp: deductionInp[];
@@ -21,6 +24,7 @@ export type deductionprops = {
   setrentInp: React.Dispatch<React.SetStateAction<rentInp>>;
 };
 
+// type for invoice component props
 export type invoiceProps = {
   incomeInp: incomeInp[];
   deductionInp: deductionInp[];
@@ -50,4 +54,6 @@ export type calculate = {
   totalSalary: number;
   totalDeduction: number;
   taxableIncome: number;
+  newTax: number;
+  existTax: number;
 };

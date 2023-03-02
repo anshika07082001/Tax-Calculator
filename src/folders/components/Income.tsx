@@ -1,9 +1,9 @@
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import React from "react";
 import { incomeProps } from "../type/Type";
 
 const Income = (props: incomeProps) => {
-  // onchange handler
+  // income change handler for input box
   const incChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     item: any
@@ -21,16 +21,11 @@ const Income = (props: incomeProps) => {
     props.setIncomeInp([...props.incomeInp]);
   };
 
-  //   submit handler
-  //   const incomeHandler = (e: React.FormEvent<HTMLFormElement>) => {
-  //     e.preventDefault();
-
-  //   };
-
   return (
     <div className="income">
       <h2>Income Details</h2>
       <form className="income__form">
+        {/* dynamic rendering of input boxes */}
         {props.incomeInp.map((item, i) => {
           return (
             <TextField
@@ -45,9 +40,6 @@ const Income = (props: incomeProps) => {
             />
           );
         })}
-        {/* <Button variant="contained" type="submit">
-          Submit
-        </Button> */}
       </form>
     </div>
   );
