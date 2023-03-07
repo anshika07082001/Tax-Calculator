@@ -37,6 +37,7 @@ const Main = () => {
   var [calculateFinal, setcalculateFinal] = useState({
     totalSalary: 0,
     totalDeduction: 0,
+    HRADeduction: 0,
     taxableIncome: 0,
     newTax: 0,
     existTax: 0,
@@ -97,11 +98,15 @@ const Main = () => {
       HRA3 = (40 / 100) * parseInt(incomeInp[0].value);
     }
     var hraArr = [parseInt(incomeInp[1].value), HRA2, HRA3];
-    var finalHra = hraArr.sort();
+    var finalHra = hraArr.sort((a, b) => {
+      return a - b;
+    });
     if (finalHra[0] < 0) {
-      calculateFinal.totalDeduction = 0;
+      calculateFinal.HRADeduction = 0;
+      calculateFinal.totalDeduction=deduction
     } else {
-      calculateFinal.totalDeduction = finalHra[0] + deduction;
+      calculateFinal.HRADeduction = finalHra[0];
+      calculateFinal.totalDeduction=finalHra[0] +deduction;
     }
     calculateFinal.taxableIncome =
       calculateFinal.totalSalary - calculateFinal.totalDeduction;
@@ -204,6 +209,7 @@ const Main = () => {
     setrentInp({ label: "Yearly Rent Paid", error: false, value: "" });
     setcalculateFinal({
       totalSalary: 0,
+      HRADeduction: 0,
       totalDeduction: 0,
       taxableIncome: 0,
       newTax: 0,

@@ -7,6 +7,7 @@ const Invoice = (props: invoiceProps) => {
     props.calculateTax();
   }, []);
 
+  console.log(props.calculateFinal);
   return (
     <div>
       <h3>Results</h3>
@@ -20,6 +21,11 @@ const Invoice = (props: invoiceProps) => {
           {/* total deduction calculated */}
           Total Deduction : &nbsp;&nbsp; ₹
           {parseInt(props.calculateFinal.totalDeduction.toString())}
+        </p>
+        {/* total Hra Deduction calculated */}
+        <p>
+          Total HRA Deduction: &nbsp;&nbsp; ₹{" "}
+          {parseInt(props.calculateFinal.HRADeduction.toString())}
         </p>
         {/* total taxable income calculated */}
         <p>

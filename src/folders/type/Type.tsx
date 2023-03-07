@@ -53,4 +53,5 @@ export type calculate = {
   taxableIncome: number;
   newTax: number;
   existTax: number;
+  HRADeduction: number;
 };
